@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "566196571249",
+    "project_id": "masjed-db9d6",
+    "storage_bucket": "masjed-db9d6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:566196571249:android:450312cddf967242645fd0",
+        "android_client_info": {
+          "package_name": "com.example.masjed"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "566196571249-ib22aso0cd72n1ifv07cm79s1iv5e965.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkoPrVIc1T89Fze20x52oSzqCEM4PF3hE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "566196571249-ib22aso0cd72n1ifv07cm79s1iv5e965.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
