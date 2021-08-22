@@ -78,9 +78,9 @@ class _SplashState extends State<Splash> {
               return Consumer<ProviderMasjed>(
                 builder: (context,ProviderMasjed,x){
                   if (ProviderMasjed.user() != null) {
-                    x= Moshref();
-                  } else {
                     x= Login();
+                  } else {
+                    x= Moshref();
                   }
                   return x;
                 },
