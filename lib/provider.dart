@@ -92,7 +92,6 @@ class ProviderMasjed extends ChangeNotifier{
         course:mohafethCourse,
       );
       await FireStore_Helper.FireStoreHelper.add("mohafeths",mohafeth.toMap());
-      await Auth_Helper.authHelper.verifyEmail();
       await Auth_Helper.authHelper.logout();
 
     } on Exception catch (e) {
@@ -122,7 +121,6 @@ class ProviderMasjed extends ChangeNotifier{
         course: studentCourse,
       );
       await FireStore_Helper.FireStoreHelper.add("students",student.toMap());
-      await Auth_Helper.authHelper.verifyEmail();
       await Auth_Helper.authHelper.logout();
 
     } on Exception catch (e) {
@@ -148,7 +146,9 @@ class ProviderMasjed extends ChangeNotifier{
         .getUserFromFirestore(userCredinial.user.uid,"students");
 
   }
-
+ logOut()async{
+    await Auth_Helper.authHelper.logout();
+ }
 
 
 
@@ -405,6 +405,9 @@ Future<Uint8List> _readImageData(String name) async {
         "data:application/octet-stream;charset=utf-16le;base64,${base64.encode(bytes)}")
       ..setAttribute("download", fileName)
       ..click();
+  }
+  user() async{
+    return await Auth_Helper.authHelper.user();
   }
 
 }

@@ -11,6 +11,8 @@ import 'package:masjed/MoshrefUi/myData/myData.dart';
 import 'package:masjed/MoshrefUi/reportAdding/reportAdding.dart';
 import 'package:masjed/appBar.dart';
 import 'package:masjed/lists.dart';
+import 'package:masjed/provider.dart';
+import 'package:provider/provider.dart';
 import 'drawerButton.dart';
 
 class DrawerApp extends StatelessWidget {
@@ -128,15 +130,18 @@ class DrawerApp extends StatelessWidget {
               () {
                 Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (con)=>MyData()));
               }),
-          DrawerButton(
-              Icon(
-                Icons.logout_outlined,
-                color: Colors.black,
-                size: 30,
-              ),
-              "تسجيل خروج", () {
-            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (con)=>Login()));
-          }),
+          Consumer<ProviderMasjed>(
+            builder:(context,ProviderMasjed,x)=> DrawerButton(
+                Icon(
+                  Icons.logout_outlined,
+                  color: Colors.black,
+                  size: 30,
+                ),
+                "تسجيل خروج", () {
+                  ProviderMasjed.logOut();
+              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (con)=>Login()));
+            }),
+          ),
         ],
       ),
     );

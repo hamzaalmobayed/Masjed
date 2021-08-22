@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:masjed/MoshrefUi/moshref/Moshref.dart';
 import 'package:masjed/bottomBar.dart';
 import 'package:masjed/provider.dart';
 import 'package:provider/provider.dart';
@@ -11,6 +12,7 @@ import 'helpers/dbHelper.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   await DbHelper.dbHelper.initDataBase();
   runApp(ChangeNotifierProvider<ProviderMasjed>(
     create: (context)=>ProviderMasjed(),
@@ -71,7 +73,20 @@ class _SplashState extends State<Splash> {
     Timer(
         Duration(seconds: 3),
         () => Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (BuildContext context) => Login())));
+            MaterialPageRoute(builder: (BuildContext context) {
+              Widget x;
+              return Consumer<ProviderMasjed>(
+                builder: (context,ProviderMasjed,x){
+                  if (ProviderMasjed.user() != null) {
+                    x= Moshref();
+                  } else {
+                    x= Login();
+                  }
+                  return x;
+                },
+              );
+
+            })));
   }
 
   @override

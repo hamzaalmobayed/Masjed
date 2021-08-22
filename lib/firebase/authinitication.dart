@@ -10,6 +10,8 @@ class Auth_Helper{
     try {
       UserCredential userCredential = await firebaseAuth
           .createUserWithEmailAndPassword(email: email, password: password);
+      print(userCredential.user.email);
+      print(userCredential.user.uid);
       return userCredential;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -40,17 +42,9 @@ class Auth_Helper{
     }
   }
 
-  resetPassword(String email) async {
-    await firebaseAuth.sendPasswordResetEmail(email: email);
-    CustomDialoug.customDialoug.showCustomDialoug(
-        'we have sent email for reset password, please check your email',loginCon);
-  }
 
-  verifyEmail() async {
-    await firebaseAuth.currentUser.sendEmailVerification();
-    CustomDialoug.customDialoug.showCustomDialoug(
-        'verification email has been sent, please check your email',loginCon);
-  }
+
+
 
   logout() async {
     firebaseAuth.signOut();
